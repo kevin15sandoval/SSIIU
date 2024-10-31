@@ -92,6 +92,20 @@ router.post("/secure", tokenVerify, crearPelis);
     res.status(500).send(err);    
   });
 };
+
+router.put("/:id", function (req, res) {
+  Movie.findByIdAndUpdate(req.params.id, req.body, function (err, movieinfo) {
+    if (err) res.status(500).send(err);
+    else res.sendStatus(200);
+  });
+});
+router.delete("/:id", function (req, res, next) {
+  Movie.findByIdAndDelete(req.params.id, function (err, movieinfo) {
+    if (err) res.status(500).send(err);
+    else res.sendStatus(200);
+  });
+});
+
   // /* POST a new movie*/
   // router.post("/", function (req, res) {
   //   Movie.create(req.body, function (err, movieinfo) {
