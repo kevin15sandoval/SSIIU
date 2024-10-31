@@ -1,1 +1,0 @@
-He utilizado tu cluster
